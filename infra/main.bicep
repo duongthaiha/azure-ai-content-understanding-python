@@ -11,6 +11,7 @@ param environmentName string
   'australiaeast'
   'eastus'
   'eastus2'
+  'japaneast'
   'northeurope'
   'southcentralus'
   'southeastasia'
@@ -18,7 +19,6 @@ param environmentName string
   'uksouth'
   'westeurope'
   'westus'
-  'westus2'
   'westus3'
 ])
 @metadata({
@@ -44,14 +44,14 @@ var tags = {
 }
 
 // Organize resources in a resource group
-resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+resource resourceGroup 'Microsoft.Resources/resourceGroups@2025-04-01' = {
     name: '${resourcePrefix}-rg'
     location: location
     tags: tags
 }
 
 var aiServiceName = '${resourcePrefix}-aiservice'
-module aiService 'br/public:avm/res/cognitive-services/account:0.8.1' = {
+module aiService 'br/public:avm/res/cognitive-services/account:0.14.1' = {
   name: 'aiService'
   scope: resourceGroup
   params: {
